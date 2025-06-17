@@ -6,6 +6,7 @@ import {
   addToWatchlist,
   removeFromWatchlist,
 } from "../features/movies/watchlistSlice";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,18 +20,20 @@ const Home: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div style={{ padding: "2rem" }}>
       <h2>Popular Movies</h2>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
         {popular.map((movie: Movie) => (
           <div key={movie.id} style={{ width: "200px" }}>
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={movie.title}
-              style={{ width: "100%" }}
-            />
+            <Link to={`/movie/${movie.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title}
+                style={{ width: "100%" }}
+              />
+            </Link>
             <h4>{movie.title}</h4>
             <p>{movie.release_date}</p>
             {watchlist.findIndex(

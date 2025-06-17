@@ -8,9 +8,14 @@ const Navbar = () => {
         CineStack
       </Link>
       <ul className="nav-links">
-        {/* <li>
-          <Searchbar />
-        </li> */}
+        <li>
+          <NavLink
+            to="/search"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Search
+          </NavLink>
+        </li>
         <li>
           <NavLink
             to="/watchlist"

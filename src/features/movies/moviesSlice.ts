@@ -1,12 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchPopularMovies } from "../../api/tmdb";
 
+export interface Genre {
+  id: number;
+  name: string;
+}
+
 export interface Movie {
   id: number;
   title: string;
   poster_path: string;
   release_date: string;
   overview: string;
+  vote_average?: number;
+  genres?: Genre[];
 }
 
 interface MoviesState {
